@@ -159,26 +159,25 @@
 <span id="visii"></span><h1>Visii<a class="headerlink" href="#module-visii" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="visii.initialize_interactive">
-<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">initialize_interactive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">window_on_top</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.initialize_interactive" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">initialize_interactive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">window_on_top</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.initialize_interactive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes various backend systems required to render scene data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>window_on_top</strong> (<em>boolean</em>) – Keeps the window opened during an interactive session on top of any other windows.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window_on_top</strong> (<em>boolean</em>) – Keeps the window opened during an interactive session on top of any other windows.</p></li>
+<li><p><strong>verbose</strong> (<em>boolean</em>) – If false, visii will avoid outputing any unneccessary text</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="visii.initialize_headless">
-<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">initialize_headless</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#visii.initialize_headless" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">initialize_headless</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.initialize_headless" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes various backend systems required to render scene data.</p>
-<p>This call avoids using any OpenGL resources, to enable</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="visii.cleanup">
-<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#visii.cleanup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cleans up any allocated resources, closes windows and shuts down any running backend systems.</p>
+<p>This call avoids using any OpenGL resources, to enable
+:type verbose: boolean
+:param verbose: If false, visii will avoid outputing any unneccessary text</p>
 </dd></dl>
 
 <dl class="py function">
@@ -295,7 +294,7 @@ max bounce depth might need to be increased to accurately render these objects.<
 
 <dl class="py function">
 <dt id="visii.render">
-<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">samples_per_pixel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.render" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">samples_per_pixel</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.render" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders the current scene, returning the resulting framebuffer back to the user directly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -303,6 +302,7 @@ max bounce depth might need to be increased to accurately render these objects.<
 <li><p><strong>width</strong> (<em>int</em>) – The width of the image to render</p></li>
 <li><p><strong>height</strong> (<em>int</em>) – The height of the image to render</p></li>
 <li><p><strong>samples_per_pixel</strong> (<em>int</em>) – The number of rays to trace and accumulate per pixel.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – A seed used to initialize the random number generator.</p></li>
 </ul>
 </dd>
 </dl>
@@ -310,7 +310,7 @@ max bounce depth might need to be increased to accurately render these objects.<
 
 <dl class="py function">
 <dt id="visii.render_to_hdr">
-<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">render_to_hdr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">samples_per_pixel</span></em>, <em class="sig-param"><span class="n">image_path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.render_to_hdr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">render_to_hdr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">samples_per_pixel</span></em>, <em class="sig-param"><span class="n">image_path</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.render_to_hdr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders the current scene, saving the resulting framebuffer to an HDR image on disk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -319,6 +319,7 @@ max bounce depth might need to be increased to accurately render these objects.<
 <li><p><strong>height</strong> (<em>int</em>) – The height of the image to render</p></li>
 <li><p><strong>samples_per_pixel</strong> (<em>int</em>) – The number of rays to trace and accumulate per pixel.</p></li>
 <li><p><strong>image_path</strong> (<em>string</em>) – The path to use to save the HDR file, including the extension.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – A seed used to initialize the random number generator.</p></li>
 </ul>
 </dd>
 </dl>
@@ -326,7 +327,7 @@ max bounce depth might need to be increased to accurately render these objects.<
 
 <dl class="py function">
 <dt id="visii.render_to_png">
-<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">render_to_png</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">samples_per_pixel</span></em>, <em class="sig-param"><span class="n">image_path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.render_to_png" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">render_to_png</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">samples_per_pixel</span></em>, <em class="sig-param"><span class="n">image_path</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.render_to_png" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders the current scene, saving the resulting framebuffer to a PNG image on disk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -335,6 +336,7 @@ max bounce depth might need to be increased to accurately render these objects.<
 <li><p><strong>height</strong> (<em>int</em>) – The height of the image to render</p></li>
 <li><p><strong>samples_per_pixel</strong> (<em>int</em>) – The number of rays to trace and accumulate per pixel.</p></li>
 <li><p><strong>image_path</strong> (<em>string</em>) – The path to use to save the PNG file, including the extension.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – A seed used to initialize the random number generator.</p></li>
 </ul>
 </dd>
 </dl>
@@ -342,7 +344,7 @@ max bounce depth might need to be increased to accurately render these objects.<
 
 <dl class="py function">
 <dt id="visii.render_data">
-<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">render_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">start_frame</span></em>, <em class="sig-param"><span class="n">frame_count</span></em>, <em class="sig-param"><span class="n">bounce</span></em>, <em class="sig-param"><span class="n">options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.render_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">visii.</code><code class="sig-name descname">render_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">start_frame</span></em>, <em class="sig-param"><span class="n">frame_count</span></em>, <em class="sig-param"><span class="n">bounce</span></em>, <em class="sig-param"><span class="n">options</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.render_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders out metadata used to render the current scene, returning the resulting framebuffer back to the user directly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -358,6 +360,7 @@ would save data for objects directly visible to the camera, a value of 1 would s
 “position” for rendering out the world space position of the path vertex, “normal” for rendering out the world space normal of the
 path vertex, “entity_id” for rendering out the entity ID whose surface the path vertex hit, “denoise_normal” for rendering out
 the normal buffer supplied to the Optix denoiser, and “denoise_albedo” for rendering out the albedo supplied to the Optix denoiser.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – A seed used to initialize the random number generator.</p></li>
 </ul>
 </dd>
 </dl>

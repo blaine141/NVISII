@@ -461,10 +461,14 @@ supplied per vertex data must be a multiple of 3 in length.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>string</em>) – The name (used as a primary key) for this mesh component</p></li>
-<li><p><strong>positions</strong> (<em>std::vector&lt; glm::vec4</em><em>,</em><em>std::allocator&lt; glm::vec4 &gt; &gt;</em>) – A list of 3D vertex positions. If indices aren’t supplied, this must be a multiple of 3.</p></li>
-<li><p><strong>normals</strong> (<em>std::vector&lt; glm::vec4</em><em>,</em><em>std::allocator&lt; glm::vec4 &gt; &gt;</em>) – A list of 3D vertex normals. If indices aren’t supplied, this must be a multiple of 3.</p></li>
-<li><p><strong>colors</strong> (<em>std::vector&lt; glm::vec4</em><em>,</em><em>std::allocator&lt; glm::vec4 &gt; &gt;</em>) – A list of per-vertex colors. If indices aren’t supplied, this must be a multiple of 3.</p></li>
-<li><p><strong>texcoords</strong> (<em>std::vector&lt; glm::vec2</em><em>,</em><em>std::allocator&lt; glm::vec2 &gt; &gt;</em>) – A list of 2D per-vertex texture coordinates. If indices aren’t supplied, this must be a multiple of 3.</p></li>
+<li><p><strong>positions</strong> (<em>std::vector&lt; float</em><em>,</em><em>std::allocator&lt; float &gt; &gt;</em>) – A list of vertex positions. If indices aren’t supplied, this must be a multiple of 3.</p></li>
+<li><p><strong>position_dimensions</strong> (<em>int</em>) – The number of floats per position. Valid numbers are 3 or 4.</p></li>
+<li><p><strong>normals</strong> (<em>std::vector&lt; float</em><em>,</em><em>std::allocator&lt; float &gt; &gt;</em>) – A list of vertex normals. If indices aren’t supplied, this must be a multiple of 3.</p></li>
+<li><p><strong>normal_dimensions</strong> (<em>int</em>) – The number of floats per normal. Valid numbers are 3 or 4.</p></li>
+<li><p><strong>colors</strong> (<em>std::vector&lt; float</em><em>,</em><em>std::allocator&lt; float &gt; &gt;</em>) – A list of per-vertex colors. If indices aren’t supplied, this must be a multiple of 3.</p></li>
+<li><p><strong>color_dimensions</strong> (<em>int</em>) – The number of floats per color. Valid numbers are 3 or 4.</p></li>
+<li><p><strong>texcoords</strong> (<em>std::vector&lt; float</em><em>,</em><em>std::allocator&lt; float &gt; &gt;</em>) – A list of 2D per-vertex texture coordinates. If indices aren’t supplied, this must be a multiple of 3.</p></li>
+<li><p><strong>texcoord_dimensions</strong> (<em>int</em>) – The number of floats per texcoord. Valid numbers are 2. (3 might be supported later for 3D textures…)</p></li>
 <li><p><strong>indices</strong> (<em>std::vector&lt; uint32_t</em><em>,</em><em>std::allocator&lt; uint32_t &gt; &gt;</em>) – A list of integer indices connecting vertex positions in a counterclockwise ordering to form triangles. If supplied, indices must be a multiple of 3.</p></li>
 </ul>
 </dd>
@@ -531,6 +535,52 @@ supplied per vertex data must be a multiple of 3 in length.</p>
 <dd class="field-odd"><p>a reference to the mesh component</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="visii.mesh.create_line">
+<em class="property">static </em><code class="sig-name descname">create_line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">stop</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">segments</span><span class="o">=</span><span class="default_value">16</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.mesh.create_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a line from a circle extruded linearly between the specified start and stop positions.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">type name</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>The name (used as a primary key) for this mesh component</p>
+</dd>
+<dt class="field-odd">type start</dt>
+<dd class="field-odd"><p><a class="reference internal" href="all.html#visii.vec3" title="visii.vec3"><code class="xref py py-class docutils literal notranslate"><span class="pre">vec3</span></code></a></p>
+</dd>
+<dt class="field-even">param start</dt>
+<dd class="field-even"><p>The start position of the linear path.</p>
+</dd>
+<dt class="field-odd">type start</dt>
+<dd class="field-odd"><p><a class="reference internal" href="all.html#visii.vec3" title="visii.vec3"><code class="xref py py-class docutils literal notranslate"><span class="pre">vec3</span></code></a></p>
+</dd>
+<dt class="field-even">param start</dt>
+<dd class="field-even"><p>The stop position of the linear path.</p>
+</dd>
+<dt class="field-odd">type radius</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">param radius</dt>
+<dd class="field-even"><p>The radius of the extruded circle</p>
+</dd>
+<dt class="field-odd">type segments</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">param segments</dt>
+<dd class="field-even"><p>Number of subdivisions around the circle.</p>
+</dd>
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh</span></code></p>
+</dd>
+<dt class="field-even">return</dt>
+<dd class="field-even"><p>a reference to the mesh component</p>
+</dd>
+</dl>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
@@ -1269,6 +1319,30 @@ supplied per vertex data must be a multiple of 3 in length.</p>
 </dd>
 </dl>
 </div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt id="visii.mesh.create_wireframe_bounding_box">
+<em class="property">static </em><code class="sig-name descname">create_wireframe_bounding_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#visii.mesh.create_wireframe_bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a wireframe bounding box spanning the region between the minimum corner to
+the maximum corner, and aligned along the x, y, and z axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – The name (used as a primary key) for this mesh component</p></li>
+<li><p><strong>min_corner</strong> (<a class="reference internal" href="all.html#visii.vec3" title="visii.vec3"><code class="xref py py-class docutils literal notranslate"><span class="pre">vec3</span></code></a>) – The position of the bottom left near corner of the axis aligned bounding box.</p></li>
+<li><p><strong>max_corner</strong> (<a class="reference internal" href="all.html#visii.vec3" title="visii.vec3"><code class="xref py py-class docutils literal notranslate"><span class="pre">vec3</span></code></a>) – The position of the top right far corner of the axis aligned bounding box.</p></li>
+<li><p><strong>size</strong> – The side length in x (0), y (1) and z (2) direction.</p></li>
+<li><p><strong>thickness</strong> (<em>float</em>) – The thickness of the wires in the wireframe.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a reference to the mesh component</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
